@@ -42,9 +42,13 @@ class MainActivity : AppCompatActivity() {
                 if(result.body() != null){
                     adapter = PokemonAdapter(result.body()?.results ?: listOf(), object : PokemonAdapter.OnItemClickListener {
                         override fun onItemClick(pokemon: com.example.week7_getpokemon.model.Result) {
+                            val bundle = Bundle()
+                            bundle.putString("name", pokemon.name)
+                            bundle.putString("url", pokemon.url)
                             val intent = Intent(this@MainActivity, PokemonDetailsActivity::class.java)
-                            intent.putExtra("pokemonUrl", pokemon.url)
-                            intent.putExtra("pokemonName", pokemon.name)
+//                            intent.putExtra("pokemonUrl", pokemon.url)
+//                            intent.putExtra("pokemonName", pokemon.name)
+                            intent.putExtras(bundle)
                             startActivity(intent)
                         }
                     })
