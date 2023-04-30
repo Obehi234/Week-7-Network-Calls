@@ -46,8 +46,6 @@ class MainActivity : AppCompatActivity() {
                             bundle.putString("name", pokemon.name)
                             bundle.putString("url", pokemon.url)
                             val intent = Intent(this@MainActivity, PokemonDetailsActivity::class.java)
-//                            intent.putExtra("pokemonUrl", pokemon.url)
-//                            intent.putExtra("pokemonName", pokemon.name)
                             intent.putExtras(bundle)
                             startActivity(intent)
                         }
