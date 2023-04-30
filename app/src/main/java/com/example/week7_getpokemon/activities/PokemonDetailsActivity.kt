@@ -19,6 +19,7 @@ class PokemonDetailsActivity : AppCompatActivity() {
      lateinit var tvDisplay: TextView
     private var progressDialog: ProgressDialog? = null
     private lateinit var apiService: ApiService
+    var pokemonName: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,38 +32,27 @@ class PokemonDetailsActivity : AppCompatActivity() {
         tvPokemon = findViewById(R.id.tvPokemon)
         tvDisplay = findViewById(R.id.tvDisplay)
         val bundle = intent.extras
-//        val pokemonName = intent.getStringExtra("pokemonName")
-//        val pokemonUrl = intent.getStringExtra("pokemonUrl")
 
       if (bundle  != null) {
-          tvPokemon.text = bundle.getString("name")
-
-          val url = bundle.getString("url")
-
-          Glide.with(this)
-              .load(url)
-              .into(pokeImage)
-
+          pokemonName = bundle.getString("name")
         }
+        tvPokemon.text = pokemonName
         getPokemonDetails()
-
-//        tvPokemon.text = pokemonName
-//        Glide.with(this)
-//            .load(pokemonUrl)
-//            .into(pokeImage)
-
     }
 
     private fun getPokemonDetails() {
         lifecycleScope.launch {
             showLoading("Getting, please wait ...")
 
-            val result = apiService.getPokemonDetails("weedle")
+            val result = apiService.getPokemonDetails(pokemonName ?: "")
             if(result.isSuccessful) {
                 if (result.body() != null) {
                     //Get request success
                     Log.d("oooooo", "getPokemonDetails ${result.body()}")
-
+                    val pokemonImage = result.body()!!.sprites.back_default
+                    Glide.with(this@PokemonDetailsActivity)
+                        .load(pokemonImage)
+                        .into(pokeImage)
 
                 } else {
                     //Request failed
@@ -75,7 +65,6 @@ class PokemonDetailsActivity : AppCompatActivity() {
 
     private fun showLoading(message: String) {
         progressDialog = ProgressDialog.show(this, null, message, true)
-
     }
 
 
