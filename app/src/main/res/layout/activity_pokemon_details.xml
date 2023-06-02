@@ -39,44 +39,114 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:id="@+id/cdMoves"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="20dp"-->
-    <!--        app:cardElevation="8dp"-->
-    <!--        app:cardCornerRadius="15dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/tvPokemon"-->
-    <!--        app:layout_constraintStart_toStartOf="parent">-->
+    <!--    MOVES-->
 
-    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:padding="15dp">-->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvPokemon"
+        android:layout_marginTop="20dp">
 
-    <!--            <TextView-->
-    <!--                android:id="@+id/tvMoves"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginTop="15dp"-->
-    <!--                android:text="Moves"-->
-    <!--                android:textSize="34sp"-->
-    <!--                android:textStyle="bold"-->
-    <!--                app:layout_constraintStart_toStartOf="parent"-->
-    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <!--            <TextView-->
-    <!--                android:id="@+id/tvMovesName"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginTop="24sp"-->
-    <!--                android:text="Move Name"-->
-    <!--                app:layout_constraintTop_toBottomOf="@id/tvMoves"-->
-    <!--                app:layout_constraintStart_toStartOf="parent"/>-->
+            <TextView
+                android:id="@+id/movesHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Moves"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-    <!--    </androidx.cardview.widget.CardView>-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMoves"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:layout_marginTop="16dp"
+                android:padding="15dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/movesHeader"
+                app:spanCount="3"
+                tools:itemCount="6"
+                tools:listitem="@layout/moves_list" />
+
+
+<!--                               STATS                          -->
+
+            <TextView
+                android:id="@+id/statsHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Stats"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvMoves" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statsHeader"
+                tools:listitem="@layout/moves_list"
+                android:padding="15dp"
+                app:spanCount="3"
+                tools:itemCount="6"
+                android:layout_margin="12dp"
+                android:layout_marginBottom="12dp" />
+
+<!--                             ABILITIES                -->
+
+            <TextView
+                android:id="@+id/abilityHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Abilities"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvStats" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAbilities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/abilityHeader"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:listitem="@layout/moves_list"
+                android:padding="15dp"
+                app:spanCount="3"
+                tools:itemCount="6"
+                android:layout_margin="12dp"
+                android:layout_marginBottom="12dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

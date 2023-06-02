@@ -17,8 +17,8 @@ class PokemonAdapter(val pokemonList: List<Result>, val listener: OnItemClickLis
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val pokemonImage: ImageView = itemView.findViewById(R.id.pokemon_image)
-        val pokemonName: TextView = itemView.findViewById(R.id.pokemon_name)
+        val pokemonImage: ImageView = itemView.findViewById(R.id.move_image)
+        val pokemonName: TextView = itemView.findViewById(R.id.move_name)
 
         fun bind(pokemon: Result) {
             val context = itemView.context
