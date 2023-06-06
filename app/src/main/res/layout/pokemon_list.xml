@@ -15,6 +15,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/pokemonNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="#001"
+            android:layout_marginEnd="15dp"
+            android:textColor="#575151"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
         <ImageView
             android:id="@+id/move_image"
             android:layout_width="match_parent"
@@ -22,16 +33,21 @@
             android:src="@drawable/img"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+
         <TextView
             android:id="@+id/move_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
             android:text="Sample Text"
-            android:textSize="24sp"
+            android:textSize="30sp"
+            android:textColor="@color/purple_700"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/move_image" />
+            app:layout_constraintTop_toBottomOf="@id/move_image"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

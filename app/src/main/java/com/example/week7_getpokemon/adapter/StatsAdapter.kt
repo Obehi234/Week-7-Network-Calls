@@ -1,5 +1,6 @@
 package com.example.week7_getpokemon.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,16 @@ class StatsAdapter(val statsList : List<Stat>) : RecyclerView.Adapter<StatsAdapt
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.moves_list, parent, false)
-        return ViewHolder(itemView)
+        val viewHolder = ViewHolder(itemView)
+        viewHolder.itemView.setBackgroundColor(getRandomColor())
+        return viewHolder
+    }
+
+    private fun getRandomColor(): Int {
+        val cardColors = arrayOf("#D1F0B1", "#8C8A93", "#92B4A7", "#F6F4D2", "#CBDFBD")
+        val randomIndex = (0 until cardColors.size).random()
+        return Color.parseColor(cardColors[randomIndex])
+
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

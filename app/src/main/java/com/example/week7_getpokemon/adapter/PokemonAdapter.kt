@@ -11,6 +11,7 @@ import com.example.week7_getpokemon.R
 import com.example.week7_getpokemon.model.Result
 
 class PokemonAdapter(val pokemonList: List<Result>, val listener: OnItemClickListener): RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
+    private var filteredPokemonList: List<Result> = pokemonList
 
     interface OnItemClickListener {
         fun onItemClick(pokemon: Result)
@@ -19,6 +20,13 @@ class PokemonAdapter(val pokemonList: List<Result>, val listener: OnItemClickLis
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val pokemonImage: ImageView = itemView.findViewById(R.id.move_image)
         val pokemonName: TextView = itemView.findViewById(R.id.move_name)
+        val pokemonNumber: TextView = itemView.findViewById(R.id.pokemonNumber)
+
+        fun setSerialNumber(number: Int) {
+            val formattedNumber = String.format("#%03d", number)
+            pokemonNumber.text = formattedNumber
+
+        }
 
         fun bind(pokemon: Result) {
             val context = itemView.context
@@ -29,11 +37,23 @@ class PokemonAdapter(val pokemonList: List<Result>, val listener: OnItemClickLis
                 .into(pokemonImage)
             pokemonName.text = pokemon.name
 
+
             // Set the click listener for the item view
             itemView.setOnClickListener {
                 listener.onItemClick(pokemon)
             }
         }
+    }
+
+    fun filter(query: String) {
+        filteredPokemonList = if (query.isBlank()) {
+            pokemonList
+        } else {
+            pokemonList.filter { pokemon ->
+                pokemon.name.contains(query.trim(), ignoreCase = true)
+            }
+        }
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,6 +65,9 @@ class PokemonAdapter(val pokemonList: List<Result>, val listener: OnItemClickLis
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val pokemon = pokemonList[position]
+        val serialNumber = position + 1
+
+        holder.setSerialNumber(serialNumber)
         holder.bind(pokemon)
     }
 

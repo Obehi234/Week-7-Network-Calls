@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SearchView
 import android.widget.Toast
 
 import androidx.lifecycle.lifecycleScope
@@ -24,17 +25,33 @@ class MainActivity : AppCompatActivity() {
     private var progressDialog: ProgressDialog? = null
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: PokemonAdapter
+    private lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         apiService = RetrofitHelper.getInstance().create(ApiService::class.java)
 
-         recyclerView =  findViewById(R.id.recyclerView)
+        recyclerView =  findViewById(R.id.recyclerView)
+        searchView = findViewById(R.id.searchView)
 
-
+        searchPokemon()
         getPokemon()
     }
+
+    private fun searchPokemon() {
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String): Boolean {
+                adapter.filter(p0)
+                return true
+            }
+        })
+    }
+
 
     private fun getPokemon() {
         lifecycleScope.launch {
@@ -73,19 +90,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.favorite -> Toast.makeText(this, "You clicked on Favorite", Toast.LENGTH_SHORT).show()
-            R.id.settings -> Toast.makeText(this, "You clicked on Settings", Toast.LENGTH_SHORT).show()
-            R.id.cart -> Toast.makeText(this, "You clicked on Cart", Toast.LENGTH_SHORT).show()
-            R.id.close_app -> finish()
-        }
-        return true
-    }
 
     }
