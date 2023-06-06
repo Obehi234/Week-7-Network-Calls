@@ -6,6 +6,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
@@ -68,6 +71,21 @@ class MainActivity : AppCompatActivity() {
     private fun showLoading(msg: String) {
         progressDialog = ProgressDialog.show(this, null, msg, true)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.favorite -> Toast.makeText(this, "You clicked on Favorite", Toast.LENGTH_SHORT).show()
+            R.id.settings -> Toast.makeText(this, "You clicked on Settings", Toast.LENGTH_SHORT).show()
+            R.id.cart -> Toast.makeText(this, "You clicked on Cart", Toast.LENGTH_SHORT).show()
+            R.id.close_app -> finish()
+        }
+        return true
     }
 
     }
