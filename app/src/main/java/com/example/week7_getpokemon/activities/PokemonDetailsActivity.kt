@@ -20,7 +20,6 @@ import kotlinx.coroutines.launch
 class PokemonDetailsActivity : AppCompatActivity() {
     lateinit var pokeImage: ImageView
     lateinit var tvPokemon: TextView
-    lateinit var tvDisplay: TextView
     private var progressDialog: ProgressDialog? = null
     private lateinit var apiService: ApiService
     var pokemonName: String? = ""
@@ -37,10 +36,8 @@ class PokemonDetailsActivity : AppCompatActivity() {
 
         apiService = RetrofitHelper.getInstance().create(ApiService::class.java)
 
-
         pokeImage = findViewById(R.id.pokeImage)
         tvPokemon = findViewById(R.id.tvPokemon)
-        tvDisplay = findViewById(R.id.tvDisplay)
         rvMoves = findViewById(R.id.rvMoves)
         rvStats = findViewById(R.id.rvStats)
         rvAbilities = findViewById(R.id.rvAbilities)

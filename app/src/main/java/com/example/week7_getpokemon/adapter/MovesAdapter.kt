@@ -5,10 +5,8 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.week7_getpokemon.R
 import com.example.week7_getpokemon.model.details.Move
 
@@ -18,18 +16,8 @@ class MovesAdapter(val moveList: List<Move>) : RecyclerView.Adapter<MovesAdapter
         val moveName: TextView = itemView.findViewById(R.id.move_name)
 
         fun bind(move: Move) {
-            //val context = itemView.context
-//            val url = move.move.url
-//            Glide.with(context)
-//                .load(url)
-//                .into(moveImage)
             moveName.text = move.move.name
         }
-//            val imageNo = url.split("https://pokeapi.co/api/v2/move/")[1].split("/")[0]
-//            Glide.with(context)
-//                .load("https://pokeapi.co/api/v2/move/")
-//                .into(moveImage)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -40,10 +28,9 @@ class MovesAdapter(val moveList: List<Move>) : RecyclerView.Adapter<MovesAdapter
     }
 
     private fun getRandomColor(): Int {
-        val cardColors = arrayOf("#D1F0B1", "#8C8A93", "#92B4A7", "#F6F4D2", "#CBDFBD")
+        val cardColors = arrayOf("#072AC8", "#EEC8E0", "#60D394")
         val randomIndex = (0 until cardColors.size).random()
         return Color.parseColor(cardColors[randomIndex])
-
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

@@ -25,7 +25,6 @@ class PokemonAdapter(val pokemonList: List<Result>, val listener: OnItemClickLis
         fun setSerialNumber(number: Int) {
             val formattedNumber = String.format("#%03d", number)
             pokemonNumber.text = formattedNumber
-
         }
 
         fun bind(pokemon: Result) {

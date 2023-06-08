@@ -3,14 +3,10 @@ package com.example.week7_getpokemon.activities
 
 import android.app.ProgressDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.SearchView
-import android.widget.Toast
-
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.week7_getpokemon.ApiService
@@ -71,8 +67,6 @@ class MainActivity : AppCompatActivity() {
                         }
                     })
                     recyclerView.adapter = adapter
-
-
 
                     Log.d("Pokemon Generation: ", "getPokemonGeneration ${result.body()}")
             } else {
