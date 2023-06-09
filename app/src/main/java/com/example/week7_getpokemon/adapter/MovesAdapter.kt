@@ -23,7 +23,7 @@ class MovesAdapter(val moveList: List<Move>) : RecyclerView.Adapter<MovesAdapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.moves_list, parent, false)
         val viewHolder = ViewHolder(itemView)
-        viewHolder.itemView.setBackgroundColor(getRandomColor())
+        viewHolder.itemView.background.setTint(getRandomColor())
         return viewHolder
     }
 

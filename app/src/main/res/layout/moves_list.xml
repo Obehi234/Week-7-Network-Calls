@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/width_130dp"
     android:layout_height="@dimen/width_100dp"
     android:layout_marginEnd="@dimen/margin_6dp"
-    app:cardCornerRadius="@dimen/card_radius_15dp"
+    app:cardCornerRadius="@dimen/card_radius_10dp"
     app:cardElevation="@dimen/elevation_4dp"
+    android:padding="@dimen/padding_10dp"
     android:layout_marginBottom="@dimen/margin_12dp"
     android:layout_marginStart="@dimen/margin_6dp">
 
@@ -22,7 +22,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/pokemon_icon_1"/>
+            android:src="@drawable/pokemon_icon_1"
+            android:contentDescription="@string/pokemon_icon"
+            app:tint="@color/white" />
 
         <TextView
             android:id="@+id/move_name"
@@ -31,6 +33,7 @@
             android:layout_marginTop="@dimen/margin_10dp"
             android:text="@string/sample_text"
             android:textSize="@dimen/text_20dp"
+            android:textColor="@color/white"
             android:layout_marginBottom="@dimen/margin_20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

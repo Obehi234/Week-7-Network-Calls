@@ -10,4 +10,5 @@
     <string name="move_name">Sample Text</string>
     <string name="pokemon_name">Name</string>
     <string name="pokemon_image_description">Pokemon Image</string>
+    <string name="pokemon_icon">Pokemon Icon</string>
 </resources>

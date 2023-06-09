@@ -23,12 +23,12 @@ class AbilityAdapter (val abilityList: List<Ability>): RecyclerView.Adapter<Abil
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.moves_list, parent, false)
         val viewHolder = ViewHolder(itemView)
-        viewHolder.itemView.setBackgroundColor(getRandomColor())
+        viewHolder.itemView.background.setTint(getRandomColor())
         return viewHolder
     }
 
     private fun getRandomColor(): Int {
-        val cardColors = arrayOf("#D1F0B1", "#8C8A93", "#92B4A7", "#F6F4D2", "#CBDFBD")
+        val cardColors = arrayOf("#072AC8", "#EEC8E0", "#60D394")
         val randomIndex = (0 until cardColors.size).random()
         return Color.parseColor(cardColors[randomIndex])
 
